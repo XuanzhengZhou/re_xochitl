@@ -158,6 +158,8 @@ See [NOTICE.md](NOTICE.md) for trademarks, third-party projects and the warranty
 
 ## Licence
 
-**Not chosen yet.** Before adding a `LICENSE`, decide whether `reverse/` (reverse-engineering
-tools and notes) uses the same licence as `rmdev/` and `rmcloud/`, and keep the
-device-derived tables excluded as described in NOTICE. Until then, all rights reserved.
+MIT — see [LICENSE](LICENSE). Copyright (c) 2026 XuanzhengZhou.
+
+The MIT licence covers everything in this repository **except** the two tables derived
+from device data (`reverse/c/wbf_lut.h`, `reverse/c/zm334.h`), which are included only so
+the code compiles and carry no licence grant — see [NOTICE.md](NOTICE.md#licence).

@@ -58,6 +58,14 @@ Some upstream projects were cloned at some point for reference (**not included i
 
 Each of these projects has its own license; please get them from upstream if you want to use them.
 
+## Licence
+
+Everything in this repository is released under the MIT License (see [LICENSE](LICENSE)),
+**except** the device-derived tables listed above (`reverse/c/wbf_lut.h`, `reverse/c/zm334.h`).
+Those two files are included only so the code compiles; they come from data extracted on the
+author's own device and are provided for interoperability without any licence grant. If you
+need a clear licence for them, regenerate them from your own device with `reverse/python/wbf.py`.
+
 ## No warranty
 
 This project is the output of reverse engineering. It involves high-risk operations such as

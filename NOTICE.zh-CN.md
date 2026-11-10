@@ -53,6 +53,13 @@ reMarkable、reMarkable 2、xochitl 是 **reMarkable AS** 的商标 / 产品名�
 
 这些项目各有自己的许可证，如需使用请到上游获取。
 
+## 许可证
+
+本仓库全部内容以 MIT 许可证发布（见 [LICENSE](LICENSE)），**唯一例外**是上面列出的
+两个派生物：`reverse/c/wbf_lut.h`、`reverse/c/zm334.h`。它们只为让代码编过而保留，
+数据来自作者自己设备，按互操作目的提供，**不附带任何授权**。需要明确许可证的话，
+用 `reverse/python/wbf.py` 从你自己的设备重新生成。
+
 ## 无担保
 
 本项目是逆向工程的产物，涉及直接写 `/dev/mem`、`/dev/fb0`、注入 Qt 进程等

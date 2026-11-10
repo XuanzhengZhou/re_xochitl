@@ -1,4 +1,5 @@
 /* 334 布局：zplash 自带控制位模板(2x334) + 22C 46 相位 LUT */
+/* NOTICE: derived from device data, NOT covered by the MIT licence — see ../../NOTICE.md */
 #define NPHASES 46
 #define CELLS334 334
 #define PW 1872

@@ -149,6 +149,8 @@ cargo test
 
 ## 许可证
 
-**尚未选择**。加 `LICENSE` 之前先定两件事：`reverse/`（逆向工具与笔记）是否与
-`rmdev/`、`rmcloud/` 用同一许可证；从设备数据派生的表按 NOTICE 排除在授权之外。
-在此之前，保留所有权利。
+MIT，见 [LICENSE](LICENSE)。Copyright (c) 2026 XuanzhengZhou。
+
+MIT 覆盖本仓库全部内容，**唯一例外**是从设备数据派生的两个表
+（`reverse/c/wbf_lut.h`、`reverse/c/zm334.h`）：它们只为让代码编过而保留，
+不附带任何授权，说明见 [NOTICE.zh-CN.md](NOTICE.zh-CN.md#许可证)。

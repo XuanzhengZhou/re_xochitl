@@ -1,4 +1,5 @@
 /* 自动生成：来自官方 wbf (320_R259_AFAB21_ED103TC2M1_TC)，温度档 7 = 21 C */
+/* NOTICE: derived from device data, NOT covered by the MIT licence — see ../../NOTICE.md */
 /* 索引 idx = cur*32 + prev ；state = 2*gray ；LSB-first ；code 1=推黑 2=推白 0=不动 */
 #ifndef WBF_LUT_H
 #define WBF_LUT_H

@@ -1,0 +1,11 @@
+[Unit]
+Description=Campus-WLAN auto login timer
+
+[Timer]
+OnBootSec=25s
+OnUnitActiveSec=2min
+AccuracySec=10s
+Unit=campus-wlan-login.service
+
+[Install]
+WantedBy=timers.target

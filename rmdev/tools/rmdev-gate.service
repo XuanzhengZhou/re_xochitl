@@ -1,0 +1,15 @@
+[Unit]
+Description=rmdev 入口监视（官方库里的 DEV 条目被打开时切到 rmdev）
+After=remux.service
+
+[Service]
+ExecStart=/home/root/rmdev --watch
+Restart=always
+RestartSec=2
+# 触发后用 systemd-run 起的切换单元必须活下来
+KillMode=process
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

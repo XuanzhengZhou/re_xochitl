@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="dark light">
+<title>rmcloud · 云端笔记库</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><b>rmcloud</b><span>reMarkable 2 云端笔记库</span></div>
+  <form id="auth" class="auth" autocomplete="off">
+    <input id="cred" type="password" placeholder="粘贴访问令牌" aria-label="访问令牌" spellcheck="false">
+    <button type="submit">连接</button>
+    <button id="forget" class="ghost" type="button" hidden>忘记</button>
+  </form>
+  <p id="status" class="status" aria-live="polite">未连接</p>
+</header>
+<main class="cols">
+  <aside class="col tree" aria-label="文档树">
+    <div class="colhead">
+      <h2>笔记库</h2>
+      <button id="reload" class="ghost" type="button" title="重新载入文档树">刷新</button>
+    </div>
+    <div class="tabs" role="tablist">
+      <button id="tabNotes" class="tab on" type="button" role="tab" aria-selected="true">笔记库</button>
+      <button id="tabQuiz" class="tab" type="button" role="tab" aria-selected="false">错题</button>
+    </div>
+    <nav id="tree" class="scroll"></nav>
+    <nav id="quiz" class="scroll" hidden></nav>
+  </aside>
+  <section class="col center" aria-label="页面">
+    <div class="colhead">
+      <h2 id="doctitle">页面</h2>
+      <span id="docmeta" class="meta"></span>
+    </div>
+    <div id="center" class="scroll">
+      <p id="centerEmpty" class="empty">从左边选一篇笔记，这里显示它的页。</p>
+      <div id="pages" hidden></div>
+      <figure id="viewer" class="viewer" hidden>
+        <div class="pager">
+          <button id="prev" class="ghost" type="button" aria-label="上一页">←</button>
+          <span id="pageinfo" class="meta"></span>
+          <button id="next" class="ghost" type="button" aria-label="下一页">→</button>
+          <button id="hd" class="ghost" type="button" title="让设备渲染整页高清图（需要设备在线）">高清</button>
+          <button id="back" class="ghost" type="button">页列表</button>
+        </div>
+        <div id="pv" class="pv"></div>
+      </figure>
+    </div>
+  </section>
+  <aside class="col chat" aria-label="AI 问答">
+    <div class="colhead">
+      <h2>AI 问答</h2>
+      <select id="mode" aria-label="问答模式">
+        <option value="live" selected>实时</option>
+        <option value="select">选区</option>
+        <option value="review">批改</option>
+        <option value="organize">整理</option>
+      </select>
+    </div>
+    <div id="log" class="log scroll">
+      <p class="empty">连上之后，可以就当前笔记提问。</p>
+    </div>
+    <form id="ask" class="composer">
+      <textarea id="q" rows="3" placeholder="问点什么…（Enter 发送，Shift+Enter 换行）"></textarea>
+      <div class="actions">
+        <button id="send" type="submit">发送</button>
+        <button id="stop" class="ghost" type="button" disabled>停止</button>
+        <button id="retry" class="ghost" type="button" disabled>重试</button>
+      </div>
+    </form>
+  </aside>
+</main>
+<script src="/app.js" defer></script>
+</body>
+</html>

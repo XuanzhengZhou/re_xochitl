@@ -1,0 +1,39 @@
+[Unit]
+Description=rmdev (clean-room reMarkable UI, drives the panel itself)
+Documentation=file:///home/root/dev/BOOT.md
+# 开机链的**唯一入口**：不再经过 remux。
+#
+# 为什么要换掉 remux（真机踩过的坑）：
+#
+# 1. `remux.service` 带 `Restart=on-failure` + `StartLimitInterval=30` +
+#    `StartLimitBurst=5`：rmdev 在开机阶段连挂 5 次，systemd 就把整个 remux
+#    单元停掉 —— 屏上停在最后一帧/白屏，而且**再也不会自己起来**。
+# 2. remux 是"多任务启动器"，自己也会碰 framebuffer / EPDC（它默认套
+#    `librm2fb_client`）。我们这套面板驱动是自己写 EPDC 的，两个写者交替推波形
+#    就是花屏/灰屏/"叠了两层"。
+# 3. remux 拉起的是 `xochitl.draft` 里的 `call=`，多一层 shell 就多一层
+#    `LD_PRELOAD`/`HOME` 的坑（老脚本得手动 `unset LD_PRELOAD`）。
+#
+# 现在：systemd → rmdev，一对一，没有中间人。
+After=local-fs.target home.mount
+# 和官方 UI、remux 互斥：谁都不许在同一个屏上再画一遍
+Conflicts=remux.service xochitl.service
+# 永远重试：`StartLimitIntervalSec=0` 关掉"5 次就放弃"的行为，
+# 崩了就一直重启（屏上会短暂空白，但一定会回来，不会永久白屏）。
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Environment=HOME=/home/root
+Environment=PATH=/opt/bin:/usr/bin:/bin:/usr/sbin:/sbin
+WorkingDirectory=/home/root
+ExecStart=/home/root/rmdev
+# 崩了就重启，间隔短一点：开机阶段越早回到可用越好
+Restart=always
+RestartSec=2
+# 用 `killall rmdev` 手动停时不要立刻重启（部署脚本靠这个）
+KillSignal=SIGTERM
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

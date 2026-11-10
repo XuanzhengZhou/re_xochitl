@@ -1,0 +1,5 @@
+name=rmdev
+desc=重写中的笔记应用（Rust，DEV）
+call=/home/root/dev/rmdev.sh
+term=:
+imgFile=rmdev

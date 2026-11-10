@@ -1,0 +1,14 @@
+[Unit]
+Description=rmcloud (self-hosted cloud for reMarkable 2)
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/rmcloud
+Environment=RMCLOUD_CONFIG=/etc/rmcloud.json
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=Keep the reMarkable awake (never blank/suspend)
+# 不要写 After=multi-user.target —— 那是自己的 WantedBy 目标，
+# 会形成排序环，systemd 直接跳过这个单元（重启后就是 inactive）。
+DefaultDependencies=no
+After=sysinit.target
+
+[Service]
+Type=simple
+ExecStart=/home/root/keepawake.sh
+Restart=always
+RestartSec=5
+StartLimitIntervalSec=0
+
+[Install]
+WantedBy=multi-user.target

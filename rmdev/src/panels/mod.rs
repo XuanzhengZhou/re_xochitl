@@ -1,0 +1,19 @@
+//! 各种浮动面板。约定：`rows()` 是纯布局（可单测），`paint()` 只照着画。
+pub mod ai;
+pub mod annotate;
+pub mod docsearch;
+pub mod docsettings;
+pub mod drawer;
+pub mod libbar;
+pub mod inknote;
+pub mod live;
+pub mod mistakes;
+pub mod nbsettings;
+pub mod pagesel;
+pub mod poweroff;
+pub mod selectai;
+pub mod sleepscreen;
+pub mod slider;
+pub mod teximg;
+pub mod textcfg;
+pub mod toc;

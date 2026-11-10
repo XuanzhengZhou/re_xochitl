@@ -1,0 +1,22 @@
+[package]
+name = "rmdev"
+version = "0.1.0"
+edition = "2021"
+
+# 干净重写：不依赖 Qt，只依赖 libc（rm2fb 的动态链接需要 glibc）。
+[dependencies]
+libc = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ab_glyph = "0.2"
+miniz_oxide = "0.9"
+# CBZ 漫画页解码：纯 Rust、无 C 依赖、能编到 armv7，且都支持 progressive。
+# 实测比 jpeg-decoder 省 17 KB、比 png crate 省 33 KB（见 src/doc/comic.rs 顶部表格）。
+zune-jpeg = "0.5"
+zune-png = "0.5"
+
+[profile.release]
+opt-level = 2
+lto = true
+strip = true
+panic = "abort"

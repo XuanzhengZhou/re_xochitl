@@ -1,0 +1,14 @@
+[target.armv7-unknown-linux-gnueabihf]
+# 用 zig cc 当交叉链接器：它自带 glibc 2.17 的 armhf sysroot，
+# 设备上是 glibc 2.31，向下兼容。
+#
+# 准备（任选其一）：
+#   1) pip install ziglang，然后把 zigcc 包装脚本放进 PATH：
+#        #!/bin/sh
+#        exec python3 -m ziglang cc -target arm-linux-gnueabihf.2.17 "$@"
+#   2) 直接装 zig 0.13+，用 `zig cc` 包装；
+#   3) 不想装 zig，就把 linker 注释掉，改用 arm-linux-gnueabihf-gcc 工具链。
+#
+# 注意：静态 musl 产物不会被 LD_PRELOAD 接管，看不到 rm2fb 画布；
+# 要画屏必须是动态链接（默认即是）。
+linker = "zigcc"

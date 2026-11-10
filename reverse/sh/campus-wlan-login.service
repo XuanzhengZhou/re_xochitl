@@ -1,0 +1,7 @@
+[Unit]
+Description=Campus-WLAN auto login
+After=network.target wpa_supplicant.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/root/campus_wlan_login.sh --auto

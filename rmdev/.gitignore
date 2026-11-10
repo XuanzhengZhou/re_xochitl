@@ -1,0 +1,4 @@
+target/
+shots/
+*.log
+__pycache__/
